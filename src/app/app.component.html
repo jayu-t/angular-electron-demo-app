@@ -1,5 +1,19 @@
 <h1>Hello World!</h1>
 
+<h4>Write file content</h4>
+
+<textarea
+  name="fileContent"
+  cols="30"
+  rows="10"
+  [(ngModel)]="fileContent"
+></textarea>
+
+<br />
+<button (click)="saveFile()">Save file</button>
+<br />
+<br />
+
 <button (click)="send1()">Send 1</button>
 <button (click)="send2()">Send 2</button>
 <button (click)="invoke1()">Handle 1</button>

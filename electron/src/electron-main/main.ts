@@ -1,8 +1,10 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import { bootstrapNestApp } from '../main';
+import { logger } from './logger';
 
 function createWindow() {
+  logger.info('main process');
   const win = new BrowserWindow({
     width: 800,
     height: 600,

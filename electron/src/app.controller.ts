@@ -32,4 +32,10 @@ export class AppController {
     console.log(payload);
     return this.appService.getHello();
   }
+
+  @ElectronIpcOn('save-file')
+  saveFile(fileContent: string): void {
+    console.log(fileContent);
+    this.appService.saveFile(fileContent);
+  }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 const ipcSend = (window as any).ipc.send;
 const ipcInvoke = (window as any).ipc.invoke;
+const saveFileIpc = (window as any).ipc.saveFile;
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ const ipcInvoke = (window as any).ipc.invoke;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  fileContent = '';
+
   send1() {
     console.log('send1 click');
     ipcSend('hello1', 'Hello from send 1');
@@ -27,5 +30,11 @@ export class AppComponent {
   invoke2() {
     console.log('invoke2 click');
     ipcInvoke('hello4', { msg: 'Hello from invoke 2' });
+  }
+
+  saveFile() {
+    console.log('save file click');
+    console.log(this.fileContent);
+    saveFileIpc(this.fileContent);
   }
 }
