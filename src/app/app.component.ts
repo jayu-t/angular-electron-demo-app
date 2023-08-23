@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import logger from '../../electron/src/logger';
+
+const ipcSend = (window as any).ipc.send;
+const ipcInvoke = (window as any).ipc.invoke;
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,23 @@ import logger from '../../electron/src/logger';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'angular-electron-demo-app';
-  constructor() {
-    console.log('ffff');
+  send1() {
+    console.log('send1 click');
+    ipcSend('hello1', 'Hello from send 1');
+  }
 
-    logger.info('info');
-    logger.debug('debug');
+  send2() {
+    console.log('send2 click');
+    ipcSend('hello2', { msg: 'Hello from send 2' });
+  }
+
+  invoke1() {
+    console.log('invoke1 click');
+    ipcInvoke('hello3', 'Hello from invoke 1');
+  }
+
+  invoke2() {
+    console.log('invoke2 click');
+    ipcInvoke('hello4', { msg: 'Hello from invoke 2' });
   }
 }
