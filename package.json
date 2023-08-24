@@ -5,8 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "electron:ng-build": "ng run angular-electron-demo-app:electron-build:development",
-    "electron:ng-serve": "ng run angular-electron-demo-app:electron-serve:development",
     "electron:build": "nest build --path electron.tsconfig.json --config nest-cli.json --builder webpack --webpackPath electron.webpack.config.js",
     "electron:start": "npm run build && npm run electron:build && electron dist/app.bundle.js",
     "watch": "ng build --watch --configuration development",
