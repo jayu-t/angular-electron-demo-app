@@ -7,13 +7,8 @@
     "build": "ng build",
     "electron:ng-build": "ng run angular-electron-demo-app:electron-build:development",
     "electron:ng-serve": "ng run angular-electron-demo-app:electron-serve:development",
-    "electron:build": "tsc -p electron.tsconfig.json",
-    "electron:start": "npm run electron:ng-build && npm run electron:build && electron dist/electron-app/electron-main/main.js",
-    "nest:start": "nest start --path electron.tsconfig.json --config nest-cli.json",
-    "nest:build": "nest build",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "electron:build": "nest build --path electron.tsconfig.json --config nest-cli.json --builder webpack --webpackPath electron.webpack.config.js",
+    "electron:start": "npm run build && npm run electron:build && electron dist/app.bundle.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -58,6 +53,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "supertest": "^6.3.3",
+    "ts-loader": "^9.4.4",
     "typescript": "~5.1.3"
   }
 }

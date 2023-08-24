@@ -54,6 +54,7 @@ export class ElectronIpcTransport
         const res = await handler(data, ctx);
         return isObservable(res) ? await lastValueFrom(res) : res;
       } catch (error: any) {
+        console.error(error);
         throw new Error(error.message ?? error);
       }
     };

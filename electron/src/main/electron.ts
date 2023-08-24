@@ -1,7 +1,9 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
-import { bootstrapNestApp } from '../main';
+import { bootstrapNestApp } from './ipc/main';
 import { logger } from './logger';
+
+bootstrapNestApp();
 
 function createWindow() {
   logger.info('main process');
@@ -9,18 +11,17 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'preload.bundle.js'),
     },
   });
 
-  win.loadFile('../../angular-app/index.html');
+  win.loadFile('./angular-app/index.html');
   win.maximize();
   win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
   createWindow();
-  bootstrapNestApp();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

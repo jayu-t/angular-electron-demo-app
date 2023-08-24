@@ -1,4 +1,3 @@
-import { from } from 'rxjs';
 import * as winston from 'winston';
 
 const myLogger = winston.createLogger({
