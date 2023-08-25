@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { app } from 'electron';
 import { writeFileSync } from 'fs';
 import * as path from 'path';
+import { logger } from '../logger';
 
 @Injectable()
 export class AppService {
@@ -9,7 +11,7 @@ export class AppService {
   }
 
   saveFile(fileContent: string): void {
-    let filePath = path.join(__dirname, '../data.txt');
+    let filePath = app.getPath('appData') + 'app.txt';
     writeFileSync(filePath, fileContent);
   }
 }

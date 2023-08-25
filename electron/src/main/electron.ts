@@ -15,7 +15,7 @@ function createWindow() {
     },
   });
 
-  win.loadFile('./angular-app/index.html');
+  win.loadFile(path.join(__dirname, 'angular-app/index.html'));
   win.maximize();
   win.webContents.openDevTools();
 }
